@@ -47,6 +47,7 @@
                     <version>3.0.0-M5</version>
                     <configuration>
                         <argLine>--add-opens java.base/java.io=ALL-UNNAMED</argLine>
+                        <trimStackTrace>false</trimStackTrace>
                     </configuration>
                 </plugin>
             </plugins>

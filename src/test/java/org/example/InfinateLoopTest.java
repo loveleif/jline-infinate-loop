@@ -19,15 +19,13 @@ public class InfinateLoopTest
     void test() throws IOException
     {
         var in = new ByteArrayInputStream( "hello\nworld\n".getBytes( StandardCharsets.UTF_8 ) );
-        var out = new ByteArrayOutputStream();
+        var out = new ByteArrayOutputStream(1024);
 
-        var terminal = TerminalBuilder.builder().dumb( true ).type( Terminal.TYPE_DUMB ).streams( in, out ).build();
+        var terminal = TerminalBuilder.builder().streams( in, out ).build();
         var lineReader = LineReaderBuilder.builder()
                 .terminal( terminal )
                 .variable( LineReader.SECONDARY_PROMPT_PATTERN, "%P " )
                 .build();
-
-        System.err.println(terminal.getClass().getName());
 
         var read1 = lineReader.readLine("Input1: ");
         var read2 = lineReader.readLine("Input2: ");
